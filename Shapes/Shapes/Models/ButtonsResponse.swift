@@ -15,7 +15,7 @@ struct ButtonsResponse: Codable {
 struct DynamicButton: Codable, Identifiable {
     let id = UUID()
     var name: String
-    var drawPath: ShapeType
+    var drawPath: DrawPath
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -23,9 +23,20 @@ struct DynamicButton: Codable, Identifiable {
     }
 }
 
+struct DrawPath: Codable {
+    var shape: ShapeType
+    var style: ShapeStyle
+}
+
 // Enum to represent different types of shapes
 enum ShapeType: String, Codable , Hashable {
     case circle
     case square
     case triangle
+}
+
+enum ShapeStyle: String, Codable, Hashable {    
+    case filled
+    case dotted
+    case stroked
 }

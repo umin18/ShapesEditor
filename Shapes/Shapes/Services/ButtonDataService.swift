@@ -8,26 +8,27 @@
 import SwiftUI
 import Combine
 
-//Button Data Service allows for dependency injection to use MockService
-class ButtonDataService: ObservableObject {
+class ButtonDataService {
     
-    @Published var buttons: [DynamicButton] = []
+    private let buttonUrl = "https://staticcontent.cricut.com/static/test/styled_shapes_001.json"
     
-    private var subscription: AnyCancellable?
-    private let buttonUrl = "https://staticcontent.cricut.com/static/test/shapes_001.json"
-    
-    init() {
-        fetchButtons()
-    }
-    
-    func fetchButtons() {
+    func fetchButtons() -> AnyPublisher<[DynamicButton], Error> {
         guard let url = URL(string: buttonUrl) else {
-            return
+            return Fail(error: DataServiceError.badURL).eraseToAnyPublisher()
         }
-        subscription = NetworkingManager.download(url: url)
+        
+        return NetworkingManager.download(url: url)
             .decode(type: ButtonsResponse.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: NetworkingManager.handleCompletion(completion:), receiveValue: { [weak self] buttons in
-                self?.buttons = buttons.buttons
-            })
+            .map { $0.buttons } // Extract the array of buttons from the response
+            .mapError { error in
+                if let decodingError = error as? DecodingError {
+                    return DataServiceError.decodingError
+                } else if let urlError = error as? URLError {
+                    return DataServiceError.networkError(urlError)
+                } else {
+                    return DataServiceError.unknown
+                }
+            }
+            .eraseToAnyPublisher()
     }
 }

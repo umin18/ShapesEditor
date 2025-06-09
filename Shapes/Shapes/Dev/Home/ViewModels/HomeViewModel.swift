@@ -12,19 +12,32 @@ class HomeViewModel: ObservableObject {
     
     @Published var buttons: [DynamicButton] = []
     @Published var shapes: [ShapeItem] = []
+    @Published var errorMessage: String?
+    @Published var isLoading: Bool = false
     
-    private let dataService = ButtonDataService()
+    private let dataService: ButtonDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
-        addButtons()
+    init(dataService: ButtonDataService = ButtonDataService()) {
+        self.dataService = dataService
     }
     
-    func addButtons() {
-        dataService.$buttons
-            .sink { [weak self] buttons in
+    func fetchButtons() {
+        self.errorMessage = nil
+        self.isLoading = true
+        dataService.fetchButtons()
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                switch completion {
+                case .finished:
+                    self?.errorMessage = nil
+                    break
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] buttons in
                 self?.buttons = buttons
-            }
+            })
             .store(in: &cancellables)
     }
     
@@ -33,8 +46,8 @@ class HomeViewModel: ObservableObject {
     }
     
     // Function to add a new shape
-    func addShape(type: ShapeType) {
-        shapes.append(ShapeItem(name: type))
+    func addShape(type: DrawPath) {
+        shapes.append(ShapeItem(name: type.shape, style: type.style))
     }
     
     func clearAllShapes() {
@@ -42,7 +55,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func addCircle() {
-        shapes.append(ShapeItem(name: .circle))
+        shapes.append(ShapeItem(name: .circle, style: .filled))
     }
     
     func removeLastCircle() {

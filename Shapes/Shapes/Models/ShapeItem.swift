@@ -10,6 +10,7 @@ import Foundation
 struct ShapeItem: Identifiable {
     let id: UUID = UUID()
     var name: ShapeType
+    var style: ShapeStyle
 }
 
 

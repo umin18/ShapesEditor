@@ -9,56 +9,52 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @State private var showEditCircles = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 20) {
-                        ForEach(viewModel.shapes) { shapeItem in
-                            switch shapeItem.name {
-                            case .circle:
-                                Circle()
-                                    .fill(Color.teal)
-                                    .frame(width: 80, height: 80)
-                            case .square:
-                                Rectangle()
-                                    .fill(Color.teal)
-                                    .frame(width: 80, height: 80)
-                            case .triangle:
-                                Triangle()
-                                    .fill(Color.teal)
-                                    .frame(width: 80, height: 80)
-                            }
-                        }
-                    }
-                    .padding()
-                }
+                ShapeGridView(viewModel.shapes)
+                
                 Spacer()
+                
+                if viewModel.isLoading {
+                    ProgressView("Loading buttons...")
+                }
                 HStack {
                     ForEach(viewModel.buttons) { button in
                         Button(button.name) {
-                            viewModel.addShape(type: button.drawPath
-                            )
-                        }
-                    }
-                    .padding(.horizontal, 25)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Clear All") {
-                            print("Help tapped!")
+                            viewModel.addShape(type: button.drawPath)
                         }
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: EditCirclesView(viewModel: viewModel)) {
-                            Text("Edit Circles")
-                        }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Clear All") {
+                        viewModel.clearAllShapes()
                     }
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: EditCirclesView(viewModel: viewModel)) {
+                        Text("Edit Circles")
+                    }
+                }
+            }
+            .task {
+                viewModel.fetchButtons()
+            }
+            .onChange(of: viewModel.errorMessage) { oldValue, newValue in
+                showAlert = newValue != nil
+            }
+            .alert("Button Retrieval Error", isPresented: $showAlert) {
+                Button("Retry") {
+                    viewModel.fetchButtons()
+                }
+            } message: {
+                Text(viewModel.errorMessage ?? "An unknown error occurred.")
             }
         }
     }

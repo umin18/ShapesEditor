@@ -6,9 +6,39 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		29261CEF2DF770C000D42BF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29261C8A2DE77B6900D42BF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29261C912DE77B6900D42BF0;
+			remoteInfo = Shapes;
+		};
+		29261CFD2DF7713700D42BF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29261C8A2DE77B6900D42BF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29261C912DE77B6900D42BF0;
+			remoteInfo = Shapes;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		29261C922DE77B6900D42BF0 /* Shapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		29261CEB2DF770C000D42BF0 /* ShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29261CF92DF7713700D42BF0 /* ShapesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShapesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		29261D0D2DF7758200D42BF0 /* Exceptions for "ShapesAppTests" folder in "ShapesTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HomeViewModelTests.swift,
+				MockButtonDataService.swift,
+			);
+			target = 29261CEA2DF770C000D42BF0 /* ShapesTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		29261C942DE77B6900D42BF0 /* Shapes */ = {
@@ -16,10 +46,32 @@
 			path = Shapes;
 			sourceTree = "<group>";
 		};
+		29261CFA2DF7713700D42BF0 /* ShapesAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29261D0D2DF7758200D42BF0 /* Exceptions for "ShapesAppTests" folder in "ShapesTests" target */,
+			);
+			path = ShapesAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		29261C8F2DE77B6900D42BF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29261CE82DF770C000D42BF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29261CF62DF7713700D42BF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				29261C942DE77B6900D42BF0 /* Shapes */,
+				29261CFA2DF7713700D42BF0 /* ShapesAppTests */,
 				29261C932DE77B6900D42BF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				29261C922DE77B6900D42BF0 /* Shapes.app */,
+				29261CEB2DF770C000D42BF0 /* ShapesTests.xctest */,
+				29261CF92DF7713700D42BF0 /* ShapesAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +125,49 @@
 			productReference = 29261C922DE77B6900D42BF0 /* Shapes.app */;
 			productType = "com.apple.product-type.application";
 		};
+		29261CEA2DF770C000D42BF0 /* ShapesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29261CF12DF770C100D42BF0 /* Build configuration list for PBXNativeTarget "ShapesTests" */;
+			buildPhases = (
+				29261CE72DF770C000D42BF0 /* Sources */,
+				29261CE82DF770C000D42BF0 /* Frameworks */,
+				29261CE92DF770C000D42BF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29261CF02DF770C000D42BF0 /* PBXTargetDependency */,
+			);
+			name = ShapesTests;
+			packageProductDependencies = (
+			);
+			productName = ShapesTests;
+			productReference = 29261CEB2DF770C000D42BF0 /* ShapesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		29261CF82DF7713700D42BF0 /* ShapesAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29261CFF2DF7713700D42BF0 /* Build configuration list for PBXNativeTarget "ShapesAppTests" */;
+			buildPhases = (
+				29261CF52DF7713700D42BF0 /* Sources */,
+				29261CF62DF7713700D42BF0 /* Frameworks */,
+				29261CF72DF7713700D42BF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29261CFE2DF7713700D42BF0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				29261CFA2DF7713700D42BF0 /* ShapesAppTests */,
+			);
+			name = ShapesAppTests;
+			packageProductDependencies = (
+			);
+			productName = ShapesAppTests;
+			productReference = 29261CF92DF7713700D42BF0 /* ShapesAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +180,14 @@
 				TargetAttributes = {
 					29261C912DE77B6900D42BF0 = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					29261CEA2DF770C000D42BF0 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 29261C912DE77B6900D42BF0;
+					};
+					29261CF82DF7713700D42BF0 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 29261C912DE77B6900D42BF0;
 					};
 				};
 			};
@@ -100,12 +206,28 @@
 			projectRoot = "";
 			targets = (
 				29261C912DE77B6900D42BF0 /* Shapes */,
+				29261CEA2DF770C000D42BF0 /* ShapesTests */,
+				29261CF82DF7713700D42BF0 /* ShapesAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		29261C902DE77B6900D42BF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29261CE92DF770C000D42BF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29261CF72DF7713700D42BF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +244,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		29261CE72DF770C000D42BF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29261CF52DF7713700D42BF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29261CF02DF770C000D42BF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29261C912DE77B6900D42BF0 /* Shapes */;
+			targetProxy = 29261CEF2DF770C000D42BF0 /* PBXContainerItemProxy */;
+		};
+		29261CFE2DF7713700D42BF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29261C912DE77B6900D42BF0 /* Shapes */;
+			targetProxy = 29261CFD2DF7713700D42BF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		29261C9B2DE77B6A00D42BF0 /* Debug */ = {
@@ -298,6 +447,74 @@
 			};
 			name = Release;
 		};
+		29261CF22DF770C100D42BF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ericmincha.ShapesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shapes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shapes";
+			};
+			name = Debug;
+		};
+		29261CF32DF770C100D42BF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ericmincha.ShapesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shapes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shapes";
+			};
+			name = Release;
+		};
+		29261D002DF7713700D42BF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ericmincha.ShapesAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shapes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shapes";
+			};
+			name = Debug;
+		};
+		29261D012DF7713700D42BF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ericmincha.ShapesAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shapes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shapes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -315,6 +532,24 @@
 			buildConfigurations = (
 				29261C9E2DE77B6A00D42BF0 /* Debug */,
 				29261C9F2DE77B6A00D42BF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29261CF12DF770C100D42BF0 /* Build configuration list for PBXNativeTarget "ShapesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29261CF22DF770C100D42BF0 /* Debug */,
+				29261CF32DF770C100D42BF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29261CFF2DF7713700D42BF0 /* Build configuration list for PBXNativeTarget "ShapesAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29261D002DF7713700D42BF0 /* Debug */,
+				29261D012DF7713700D42BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

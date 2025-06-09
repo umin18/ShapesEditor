@@ -13,15 +13,7 @@ struct EditCirclesView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 20) {
-                        ForEach(viewModel.circles) { shapeItem in
-                                Circle()
-                                    .fill(Color.teal)
-                                    .frame(width: 80, height: 80)
-                        }
-                    }
-                }
+                ShapeGridView(viewModel.circles)
                 Spacer()
                 HStack {
                     Button("Delete All") {
